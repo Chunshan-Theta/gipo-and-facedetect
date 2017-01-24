@@ -81,9 +81,17 @@ index.php
 	  var Setting10 = '{"id":"9","pin":"23","GPIO":"11","Cost":"'+document.getElementById("Cost10").value+'","Device":"'+document.getElementById("Device10").value+'"}';
 	  var Setting11 = '{"id":"10","pin":"24","GPIO":"8","Cost":"'+document.getElementById("Cost11").value+'","Device":"'+document.getElementById("Device11").value+'"}';
 	  var Setting12 = '{"id":"11","pin":"26","GPIO":"7","Cost":"'+document.getElementById("Cost12").value+'","Device":"'+document.getElementById("Device12").value+'"}';
-      var JsonData = "["+Setting1+","+Setting2+","+Setting3+","+Setting4+","+Setting5+","+Setting6+","+Setting7+","+Setting8+","+Setting9+","+Setting10+","+Setting11+","+Setting12+"]";
+     	  var JsonData = "["+Setting1+","+Setting2+","+Setting3+","+Setting4+","+Setting5+","+Setting6+","+Setting7+","+Setting8+","+Setting9+","+Setting10+","+Setting11+","+Setting12+"]";
+          // Note-(DB config) : edit web-server IP address
+	  var dbname="gpio";
+	  var hostIP="127.0.0.1";
+	  var user="theta";
+	  var password="theta";
+	
+
 	  // ajax target  https://github.com/Chunshan-Theta/SQLCmdUsingPHP/blob/master/GET_Insert.php
-	  $.ajax({url: "http://127.0.0.1/GPIO/GET_Insert.php?dbname=gpio&hostIP=127.0.0.1&user=theta&password=theta&c=INSERT INTO `config` (`id`, `time`, `setting`) VALUES (NULL, CURRENT_TIMESTAMP,%27"+JsonData+"%27);", 
+	  
+	  $.ajax({url: "http://127.0.0.1/GPIO/GET_Insert.php?dbname="+dbname+"&hostIP="+hostIP+"&user="+user+"&password="+password+"&c=INSERT INTO `config` (`id`, `time`, `setting`) VALUES (NULL, CURRENT_TIMESTAMP,%27"+JsonData+"%27);", 
 			success: function(result){
 				$("#div1").html("<h1>傳輸成功</h1><br>Json:<br><h5>"+JsonData);
 			},
