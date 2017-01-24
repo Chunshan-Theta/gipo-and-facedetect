@@ -1,6 +1,7 @@
 <?php
 	// Output GPIO setting from sql 
 	// source: https://github.com/Chunshan-Theta/SQLCmdUsingPHP/blob/master/GET_SearchData.php 
+	// Note-(DB config) : edit web-server IP address
 	$dbname = "gpio";
 	$hostIP = "127.0.0.1";
 	$user = "theta";
