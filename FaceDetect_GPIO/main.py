@@ -47,7 +47,7 @@ class PicData:
 if __name__ == '__main__':
 
 	import sys, getopt
-
+	
 	args, video_src = getopt.getopt(sys.argv[1:], '', ['cascade=', 'nested-cascade='])
 	try: video_src = video_src[0]
 	except: video_src = 0
@@ -57,7 +57,9 @@ if __name__ == '__main__':
 	cascade = cv2.CascadeClassifier(cascade_fn)
 	
 	import requests as rq
-	r = str(rq.get("http://127.0.0.1/web_GPIO/RJ.php").content)
+	#Note-(WebServer address) :edit web-server IP address
+	WebServerAddress="http://127.0.0.1/web_GPIO/"
+	r = str(rq.get(WebServerAddress+"RJ.php").content)
 	#print r
 	
 	cam = create_capture(video_src, fallback='synth:bg=../cpp/lena.jpg:noise=0.05')
@@ -77,13 +79,13 @@ if __name__ == '__main__':
 		if vis.PeopleNum == 1:
 			for i in range(len(G_Set)):
 				G_Set[i].on()
-				r = rq.get("http://127.0.0.1/web_GPIO/GpioAjaxOn.php?n="+str(G_Pins[i]))
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
 
 		elif vis.PeopleNum == 0:			
 			for i in range(len(G_Set)):
 				G_Set[i].off()
-				r = rq.get("http://127.0.0.1/web_GPIO/GpioAjaxOff.php?n="+str(G_Pins[i]))
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" off"
 		else:
 			print error	
