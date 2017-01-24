@@ -69,6 +69,7 @@ on.py
 ---系統安裝
 
 Step 1 建立網路伺服器端
+
 1.1    建立資料庫：
 重建或新建資料庫可利用web_GPIO/SQLstructure.sql建立，裡面包含資料表 `config`與數筆範例資料。
 
