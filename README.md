@@ -91,7 +91,7 @@ Step 1 建立網路伺服器端
 若無反應請確定是否已開啟網路伺服器執行本機指令的權限。
 
 1.5    確保網頁遠距關閉gpio指令成功建立：
-至web_GPIO/GpioAjaxOff.php中註解點`Note—(python command) `修改路徑指向至off.py，若透過瀏覽器進入此網頁(此網頁有get參數,變數名稱為n)後關閉啟動gpio則成功。
+至web_GPIO/GpioAjaxOff.php中註解點`Note—(python command) `修改路徑指向至off.py，若透過瀏覽器進入此網頁(此網頁有get參數,變數名稱為n)後成功關閉gpio則成功。
 
 若無反應請確定是否已開啟網路伺服器執行本機指令的權限。
 
