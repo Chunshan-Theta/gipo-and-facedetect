@@ -5,5 +5,5 @@ pin = G.GpioForLights(sys.argv[1],1)
 
 
 pin.on()
-pin.clean()
+#pin.clean()
 

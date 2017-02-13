@@ -85,6 +85,7 @@ index.php
           // Note-(DB config) : edit web-server IP address
 	  var dbname="gpio";
 	  var hostIP="127.0.0.1";
+      var dir = "web_GPIO"
 	  var user="theta";
 	  var password="theta";
 	
@@ -94,6 +95,7 @@ index.php
 	  $.ajax({type: 'GET',url: "./GET_Insert.php?dbname="+dbname+"&hostIP="+hostIP+"&user="+user+"&password="+password+"&c=INSERT INTO `config` (`id`, `time`, `setting`) VALUES (NULL, CURRENT_TIMESTAMP,%27"+JsonData+"%27);", 
 			success: function(result){
 				$("#div1").html("<h1>傳輸成功</h1><br>Json:<br><h5>"+JsonData);
+				//$("#div1").html("./GET_Insert.php?dbname="+dbname+"&hostIP="+hostIP+"&user="+user+"&password="+password+"&c=INSERT INTO `config` (`id`, `time`, `setting`) VALUES (NULL, CURRENT_TIMESTAMP,%27"+JsonData+"%27);");
 			},
 			error:function(xhr, ajaxOptions, thrownError){ 
                     /* alert(xhr.status); 
