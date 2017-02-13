@@ -65,10 +65,11 @@ if __name__ == '__main__':
 	cam = create_capture(video_src, fallback='synth:bg=../cpp/lena.jpg:noise=0.05')
 
 	GpioConfig = json.loads(r)
-	GPIOPIN = g.GpioSet(GpioConfig,0)
+	GPIOPIN = g.GpioSet(GpioConfig,1)
 	G_Set = GPIOPIN.Set
 	G_Devices = GPIOPIN.Devices
 	G_Pins = GPIOPIN.Pins
+	G_state = 0
 	while True:
 		ret, img = cam.read()
 		vis = PicData(img,cascade)
@@ -76,19 +77,23 @@ if __name__ == '__main__':
 		#print type(vis)
 		cv2.imshow('facedetect', vis.DrawPic)
 		print vis.PeopleNum
-		if vis.PeopleNum == 1:
+		if vis.PeopleNum == 1 and G_state == 0:
 			for i in range(len(G_Set)):
 				G_Set[i].on()
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
+			G_state = 1
 
-		elif vis.PeopleNum == 0:			
+		elif vis.PeopleNum == 0 and G_state == 1:			
 			for i in range(len(G_Set)):
 				G_Set[i].off()
 				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" off"
+			G_state = 0
+		elif vis.PeopleNum == 1 and G_state == 1:	
+			print "GPIO is works"
 		else:
-			print error	
+			print "GPIO is Closed"	
 		
 		if 0xFF & cv2.waitKey(5) == 27:
 			for i in range(len(G_Set)):
