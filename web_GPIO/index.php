@@ -91,7 +91,7 @@ index.php
 
 	  // ajax target  https://github.com/Chunshan-Theta/SQLCmdUsingPHP/blob/master/GET_Insert.php
 	  
-	  $.ajax({url: "http://127.0.0.1/GPIO/GET_Insert.php?dbname="+dbname+"&hostIP="+hostIP+"&user="+user+"&password="+password+"&c=INSERT INTO `config` (`id`, `time`, `setting`) VALUES (NULL, CURRENT_TIMESTAMP,%27"+JsonData+"%27);", 
+	  $.ajax({type: 'GET',url: "./GET_Insert.php?dbname="+dbname+"&hostIP="+hostIP+"&user="+user+"&password="+password+"&c=INSERT INTO `config` (`id`, `time`, `setting`) VALUES (NULL, CURRENT_TIMESTAMP,%27"+JsonData+"%27);", 
 			success: function(result){
 				$("#div1").html("<h1>傳輸成功</h1><br>Json:<br><h5>"+JsonData);
 			},
