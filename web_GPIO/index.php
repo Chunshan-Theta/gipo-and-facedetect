@@ -12,50 +12,74 @@ index.php
    GPIO 4 (pin 7)<br>
    裝置名稱<input id="Device1" type="text" value="風扇"></input>
    消耗瓦數<input id="Cost1" type="text" value="50"></input>
+   <a href="./GpioAjaxOn.php?n=7">on</a>
+   <a href="./GpioAjaxOff.php?n=7">off</a>
    	<br><br>
    GPIO 17 (pin 11)<br>
    裝置名稱<input id="Device2" type="text" value="null"></input>
    消耗瓦數<input id="Cost2" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=11">on</a>
+   <a href="./GpioAjaxOff.php?n=11">off</a>
    	<br><br>
    GPIO 18 (pin 12)<br>
    裝置名稱<input id="Device3" type="text" value="null"></input>
    消耗瓦數<input id="Cost3" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=12">on</a>
+   <a href="./GpioAjaxOff.php?n=12">off</a>
    	<br><br>
    GPIO 21 (pin 13)<br>
    裝置名稱<input id="Device4" type="text" value="null"></input>
    消耗瓦數<input id="Cost4" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=13">on</a>
+   <a href="./GpioAjaxOff.php?n=13">off</a>
    	<br><br>
    GPIO 22 (pin 15)<br>
    裝置名稱<input id="Device5" type="text" value="null"></input>
    消耗瓦數<input id="Cost5" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=15">on</a>
+   <a href="./GpioAjaxOff.php?n=15">off</a>
    	<br><br>
    GPIO 23 (pin 16)<br>
    裝置名稱<input id="Device6" type="text" value="null"></input>
    消耗瓦數<input id="Cost6" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=16">on</a>
+   <a href="./GpioAjaxOff.php?n=16">off</a>
    	<br><br>
    GPIO 24 (pin 18)<br>
    裝置名稱<input id="Device7" type="text" value="null"></input>
    消耗瓦數<input id="Cost7" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=18">on</a>
+   <a href="./GpioAjaxOff.php?n=18">off</a>
    	<br><br>
    GPIO 10 (pin 19)<br>
    裝置名稱<input id="Device8" type="text" value="null"></input>
    消耗瓦數<input id="Cost8" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=19">on</a>
+   <a href="./GpioAjaxOff.php?n=19">off</a>
    	<br><br>
    GPIO 9 (pin 21)<br>
    裝置名稱<input id="Device9" type="text" value="null"></input>
    消耗瓦數<input id="Cost9" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=21">on</a>
+   <a href="./GpioAjaxOff.php?n=21">off</a>
    	<br><br>
    GPIO 11 (pin 23)<br>
    裝置名稱<input id="Device10" type="text" value="null"></input>
    消耗瓦數<input id="Cost10" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=23">on</a>
+   <a href="./GpioAjaxOff.php?n=23">off</a>
    	<br><br>
    GPIO 8 (pin 24)<br>
    裝置名稱<input id="Device11" type="text" value="null"></input>
    消耗瓦數<input id="Cost11" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=24">on</a>
+   <a href="./GpioAjaxOff.php?n=24">off</a>
    	<br><br>
    GPIO 7 (pin 26)<br>
    裝置名稱<input id="Device12" type="text" value="null"></input>
    消耗瓦數<input id="Cost12" type="text" value="null"></input>
+   <a href="./GpioAjaxOn.php?n=26">on</a>
+   <a href="./GpioAjaxOff.php?n=26">off</a>
    	
 
    
