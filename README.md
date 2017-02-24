@@ -94,13 +94,17 @@ Step 1 建立網路伺服器端
 至web_GPIO/GpioAjaxOff.php中註解點`Note—(python command) `修改路徑指向至off.py，若透過瀏覽器進入此網頁(此網頁有get參數,變數名稱為n)後成功關閉gpio則成功。
 
 ***若無反應請確定是否已開啟網路伺服器執行本機指令的權限。***
+
 權限開啟
  - sudo visudo
  - add to bottom of file : www-data ALL=(ALL)NOPASSWD:ALL
  - www-data is user_id , you can check by phpinfo()
 
 Step 2  建立臉部偵測本地端
-
+2.0 環境需求 : git , opencv2.4
+ - install git : apt-get install git
+ - install opencv2.4 : apt-get install python-opencv
+ 
 2.1 至FaceDetect_GPIO/main.py中註解點`Note-(WebServer address)`修改路徑指向網路伺服器位址。
 
 
