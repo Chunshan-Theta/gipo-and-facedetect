@@ -101,6 +101,7 @@ Step 1 建立網路伺服器端
  - www-data is user_id , you can check by phpinfo()
 
 Step 2  建立臉部偵測本地端
+
 2.0 環境需求 : git , opencv2.4
  - install git : apt-get install git
  - install opencv2.4 : apt-get install python-opencv
