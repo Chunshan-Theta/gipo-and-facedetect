@@ -109,7 +109,6 @@ index.php
           // Note-(DB config) : edit web-server IP address
 	  var dbname="gpio";
 	  var hostIP="127.0.0.1";
-      var dir = "web_GPIO"
 	  var user="theta";
 	  var password="theta";
 	
