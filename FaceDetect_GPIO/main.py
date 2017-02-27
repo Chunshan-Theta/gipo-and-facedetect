@@ -70,6 +70,10 @@ if __name__ == '__main__':
 	G_Devices = GPIOPIN.Devices
 	G_Pins = GPIOPIN.Pins
 	G_state = 0
+	TurnOnRange_4 = 4 #多於此數則點亮四顆燈	
+	TurnOnRange_3 = 3 #多於此數則點亮三顆燈 
+	TurnOnRange_2 = 2 #多於此數則點亮兩顆燈
+	TurnOnRange_1 = 1 #多於此數則點亮一顆燈
 	while True:
 		ret, img = cam.read()
 		vis = PicData(img,cascade)
@@ -77,7 +81,7 @@ if __name__ == '__main__':
 		#print type(vis)
 		cv2.imshow('facedetect', vis.DrawPic)
 		print vis.PeopleNum
-		if vis.PeopleNum == 4 and G_state != 4:
+		if vis.PeopleNum >= TurnOnRange_4 and G_state != 4:
 			LightNum = 4
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
@@ -86,7 +90,7 @@ if __name__ == '__main__':
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
 			G_state = 4
-		elif vis.PeopleNum == 3 and G_state != 3:
+		elif vis.PeopleNum >= TurnOnRange_3 and vis.PeopleNum < TurnOnRange_4 and G_state != 3:
 			LightNum = 3
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
@@ -95,7 +99,7 @@ if __name__ == '__main__':
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
 			G_state = 3
-		elif vis.PeopleNum == 2 and G_state != 2:
+		elif vis.PeopleNum >= TurnOnRange_2 and vis.PeopleNum < TurnOnRange_3 and G_state != 2:
 			LightNum = 2
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
@@ -104,7 +108,7 @@ if __name__ == '__main__':
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
 			G_state = 2
-		elif vis.PeopleNum == 1 and G_state != 1:
+		elif vis.PeopleNum >= TurnOnRange_1 and vis.PeopleNum < TurnOnRange_2 and G_state != 1:
 			LightNum = 1
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
