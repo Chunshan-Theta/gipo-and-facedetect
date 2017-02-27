@@ -88,8 +88,8 @@ if __name__ == '__main__':
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
 			for i in range(LightNum):
-				G_Set[i].on()
-				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
+				G_Set[i].on() #開啟本機電源				
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))#開啟網路電源
 				print G_Devices[i]+" on"
 			G_state = 4
 		elif vis.PeopleNum >= TurnOnRange_3 and vis.PeopleNum < TurnOnRange_4 and G_state != 3:
@@ -97,8 +97,8 @@ if __name__ == '__main__':
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
 			for i in range(LightNum):
-				G_Set[i].on()
-				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
+				G_Set[i].on() #開啟本機電源				
+ 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
 				print G_Devices[i]+" on"
 			G_state = 3
 		elif vis.PeopleNum >= TurnOnRange_2 and vis.PeopleNum < TurnOnRange_3 and G_state != 2:
@@ -106,8 +106,8 @@ if __name__ == '__main__':
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
 			for i in range(LightNum):
-				G_Set[i].on()
-				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
+				G_Set[i].on() #開啟本機電源	
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
 				print G_Devices[i]+" on"
 			G_state = 2
 		elif vis.PeopleNum >= TurnOnRange_1 and vis.PeopleNum < TurnOnRange_2 and G_state != 1:
@@ -115,15 +115,15 @@ if __name__ == '__main__':
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
 			for i in range(LightNum):
-				G_Set[i].on()
-				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
+				G_Set[i].on() #開啟本機電源	
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
 				print G_Devices[i]+" on"
 			G_state = 1
 
 		elif vis.PeopleNum == 0 and G_state != 0:			
 			for i in range(len(G_Set)):
-				G_Set[i].off()
-				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))
+				G_Set[i].off() 	#關閉本機電源			
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
 				print G_Devices[i]+" off"
 			G_state = 0
 		else:
