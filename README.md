@@ -110,6 +110,7 @@ on.py
  - install opencv2.4 : apt-get install python-opencv
  
 2.1 至FaceDetect_GPIO/main.py中註解點`Note-(WebServer address)`修改路徑指向網路伺服器位址。
+
 2.2 至FaceDetect_GPIO/main.py中註解點`Note—(Rule of turn on)`可以調整開燈的需要人數。
 
 
