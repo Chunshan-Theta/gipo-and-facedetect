@@ -69,7 +69,9 @@ if __name__ == '__main__':
 	G_Set = GPIOPIN.Set
 	G_Devices = GPIOPIN.Devices
 	G_Pins = GPIOPIN.Pins
-	G_state = 0
+	G_state = 0 
+	
+	# Note—(Rule of turn on)	
 	TurnOnRange_4 = 4 #多於此數則點亮四顆燈	
 	TurnOnRange_3 = 3 #多於此數則點亮三顆燈 
 	TurnOnRange_2 = 2 #多於此數則點亮兩顆燈
