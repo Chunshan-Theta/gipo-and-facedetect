@@ -77,7 +77,28 @@ if __name__ == '__main__':
 		#print type(vis)
 		cv2.imshow('facedetect', vis.DrawPic)
 		print vis.PeopleNum
-		if vis.PeopleNum == 1 and G_state == 0:
+		if vis.PeopleNum == 4 and G_state != 4:
+			RangeSet = 4
+			if RangeSet > len(G_Set): 
+				RangeSet = len(G_Set)
+			for i in range(RangeSet):
+				G_Set[i].on()
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
+				print G_Devices[i]+" on"
+			G_state = 4
+		elif vis.PeopleNum == 3 and G_state != 3:
+			for i in range(len(G_Set)):
+				G_Set[i].on()
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
+				print G_Devices[i]+" on"
+			G_state = 3
+		elif vis.PeopleNum == 2 and G_state != 2:
+			for i in range(len(G_Set)):
+				G_Set[i].on()
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
+				print G_Devices[i]+" on"
+			G_state = 2
+		elif vis.PeopleNum == 1 and G_state != 1:
 			for i in range(len(G_Set)):
 				G_Set[i].on()
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
