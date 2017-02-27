@@ -78,43 +78,50 @@ if __name__ == '__main__':
 		cv2.imshow('facedetect', vis.DrawPic)
 		print vis.PeopleNum
 		if vis.PeopleNum == 4 and G_state != 4:
-			RangeSet = 4
-			if RangeSet > len(G_Set): 
-				RangeSet = len(G_Set)
-			for i in range(RangeSet):
+			LightNum = 4
+			if len(G_Set) < LightNum:
+				LightNum = len(G_Set)
+			for i in range(LightNum):
 				G_Set[i].on()
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
 			G_state = 4
 		elif vis.PeopleNum == 3 and G_state != 3:
-			for i in range(len(G_Set)):
+			LightNum = 3
+			if len(G_Set) < LightNum:
+				LightNum = len(G_Set)
+			for i in range(LightNum):
 				G_Set[i].on()
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
 			G_state = 3
 		elif vis.PeopleNum == 2 and G_state != 2:
-			for i in range(len(G_Set)):
+			LightNum = 2
+			if len(G_Set) < LightNum:
+				LightNum = len(G_Set)
+			for i in range(LightNum):
 				G_Set[i].on()
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
 			G_state = 2
 		elif vis.PeopleNum == 1 and G_state != 1:
-			for i in range(len(G_Set)):
+			LightNum = 1
+			if len(G_Set) < LightNum:
+				LightNum = len(G_Set)
+			for i in range(LightNum):
 				G_Set[i].on()
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" on"
 			G_state = 1
 
-		elif vis.PeopleNum == 0 and G_state == 1:			
+		elif vis.PeopleNum == 0 and G_state != 0:			
 			for i in range(len(G_Set)):
 				G_Set[i].off()
 				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))
 				print G_Devices[i]+" off"
 			G_state = 0
-		elif vis.PeopleNum == 1 and G_state == 1:	
-			print "GPIO is works"
 		else:
-			print "GPIO is Closed"	
+			print "GPIO is works"	
 		
 		if 0xFF & cv2.waitKey(5) == 27:
 			for i in range(len(G_Set)):
