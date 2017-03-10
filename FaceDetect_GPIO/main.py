@@ -76,7 +76,8 @@ if __name__ == '__main__':
 	TurnOnRange_3 = 3 #多於此數則點亮三顆燈 
 	TurnOnRange_2 = 2 #多於此數則點亮兩顆燈
 	TurnOnRange_1 = 1 #多於此數則點亮一顆燈
-	while True:
+	SleepTime =1 # 網路版與本機板反映延遲時間(秒)	
+while True:
 		ret, img = cam.read()
 		vis = PicData(img,cascade)
 		#print type(img)
@@ -85,19 +86,76 @@ if __name__ == '__main__':
 		print vis.PeopleNum
 		if vis.PeopleNum >= TurnOnRange_4 and G_state != 4:
 			LightNum = 4
-			G_state = 4			
+			# reset gpio
+			for i in range(len(G_Set)):
+				G_Set[i].off() 	#關閉本機電源			
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+				
+			if len(G_Set) < LightNum:
+				LightNum = len(G_Set)
+			for i in range(LightNum):#local
+				G_Set[i].on() #開啟本機電源	
+				print G_Devices[i]+" on (local)"
+			time.sleep(SleepTime)	
+			for i in range(LightNum):#online
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
+				print G_Devices[i]+" on (online)"	
+			G_state = 4
 		elif vis.PeopleNum >= TurnOnRange_3 and vis.PeopleNum < TurnOnRange_4 and G_state != 3:
 			LightNum = 3
+			# reset gpio
+			for i in range(len(G_Set)):
+				G_Set[i].off() 	#關閉本機電源			
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+				
+			if len(G_Set) < LightNum:
+				LightNum = len(G_Set)
+			for i in range(LightNum):#local
+				G_Set[i].on() #開啟本機電源	
+				print G_Devices[i]+" on (local)"
+			time.sleep(SleepTime)	
+			for i in range(LightNum):#online
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
+				print G_Devices[i]+" on (online)"	
 			G_state = 3
 		elif vis.PeopleNum >= TurnOnRange_2 and vis.PeopleNum < TurnOnRange_3 and G_state != 2:
 			LightNum = 2
+			# reset gpio
+			for i in range(len(G_Set)):
+				G_Set[i].off() 	#關閉本機電源			
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+				
+			if len(G_Set) < LightNum:
+				LightNum = len(G_Set)
+			for i in range(LightNum):#local
+				G_Set[i].on() #開啟本機電源	
+				print G_Devices[i]+" on (local)"
+			time.sleep(SleepTime)	
+			for i in range(LightNum):#online
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
+				print G_Devices[i]+" on (online)"	
 			G_state = 2
 		elif vis.PeopleNum >= TurnOnRange_1 and vis.PeopleNum < TurnOnRange_2 and G_state != 1:
 			LightNum = 1
+			
+			# reset gpio
+			for i in range(len(G_Set)):
+				G_Set[i].off() 	#關閉本機電源			
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+				
+			if len(G_Set) < LightNum:
+				LightNum = len(G_Set)
+			for i in range(LightNum):#local
+				G_Set[i].on() #開啟本機電源	
+				print G_Devices[i]+" on (local)"
+			time.sleep(SleepTime)	
+			for i in range(LightNum):#online
+				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
+				print G_Devices[i]+" on (online)"	
+				
 			G_state = 1
-		##update	
-		elif vis.PeopleNum == 0 and G_state != 0:
-			LightNum = 0
+
+		elif vis.PeopleNum == 0 and G_state != 0:			
 			for i in range(len(G_Set)):
 				G_Set[i].off() 	#關閉本機電源			
 				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
@@ -106,13 +164,6 @@ if __name__ == '__main__':
 		else:
 			print "GPIO is works"	
 		
-		if len(G_Set) < LightNum:
-				LightNum = len(G_Set)
-			for i in range(LightNum):
-				G_Set[i].on() #開啟本機電源				
-				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i]))#開啟網路電源
-				print G_Devices[i]+" on"
-				
 		if 0xFF & cv2.waitKey(5) == 27:
 			for i in range(len(G_Set)):
 				G_Set[i].clean()
