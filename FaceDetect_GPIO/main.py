@@ -77,6 +77,8 @@ if __name__ == '__main__':
 	TurnOnRange_2 = 2 #多於此數則點亮兩顆燈
 	TurnOnRange_1 = 1 #多於此數則點亮一顆燈
 	SleepTime =1 # 網路版與本機板反映延遲時間(秒)	
+	# save document
+	DocumentContent = "save document\n"
 while True:
 		ret, img = cam.read()
 		vis = PicData(img,cascade)
@@ -86,72 +88,105 @@ while True:
 		print vis.PeopleNum
 		if vis.PeopleNum >= TurnOnRange_4 and G_state != 4:
 			LightNum = 4
+			# ************************** gpio function begin
 			# reset gpio
 			for i in range(len(G_Set)):
 				G_Set[i].off() 	#關閉本機電源			
-				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源			
 				
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
 			for i in range(LightNum):#local
 				G_Set[i].on() #開啟本機電源	
 				print G_Devices[i]+" on (local)"
+				
+				# update document 
+				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",local,\n"
 			time.sleep(SleepTime)	
 			for i in range(LightNum):#online
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
-				print G_Devices[i]+" on (online)"	
+				print G_Devices[i]+" on (Network)"
+				
+				# update document 
+				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",Network,\n"
+			# ************************** gpio function end
 			G_state = 4
 		elif vis.PeopleNum >= TurnOnRange_3 and vis.PeopleNum < TurnOnRange_4 and G_state != 3:
 			LightNum = 3
+			# ************************** gpio function begin
 			# reset gpio
 			for i in range(len(G_Set)):
 				G_Set[i].off() 	#關閉本機電源			
-				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源			
 				
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
 			for i in range(LightNum):#local
 				G_Set[i].on() #開啟本機電源	
 				print G_Devices[i]+" on (local)"
+				
+				# update document 
+				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",local,\n"
 			time.sleep(SleepTime)	
 			for i in range(LightNum):#online
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
-				print G_Devices[i]+" on (online)"	
+				print G_Devices[i]+" on (Network)"
+				
+				# update document 
+				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",Network,\n"
+			# ************************** gpio function end	
 			G_state = 3
 		elif vis.PeopleNum >= TurnOnRange_2 and vis.PeopleNum < TurnOnRange_3 and G_state != 2:
 			LightNum = 2
+			# ************************** gpio function begin
 			# reset gpio
 			for i in range(len(G_Set)):
 				G_Set[i].off() 	#關閉本機電源			
-				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源			
 				
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
 			for i in range(LightNum):#local
 				G_Set[i].on() #開啟本機電源	
 				print G_Devices[i]+" on (local)"
+				
+				# update document 
+				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",local,\n"
 			time.sleep(SleepTime)	
 			for i in range(LightNum):#online
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
-				print G_Devices[i]+" on (online)"	
+				print G_Devices[i]+" on (Network)"
+				
+				# update document 
+				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",Network,\n"
+			# ************************** gpio function end	
 			G_state = 2
 		elif vis.PeopleNum >= TurnOnRange_1 and vis.PeopleNum < TurnOnRange_2 and G_state != 1:
 			LightNum = 1
 			
 			# reset gpio
+			# ************************** gpio function begin
+			# reset gpio
 			for i in range(len(G_Set)):
 				G_Set[i].off() 	#關閉本機電源			
-				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源			
 				
 			if len(G_Set) < LightNum:
 				LightNum = len(G_Set)
 			for i in range(LightNum):#local
 				G_Set[i].on() #開啟本機電源	
 				print G_Devices[i]+" on (local)"
+				
+				# update document 
+				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",local,\n"
 			time.sleep(SleepTime)	
 			for i in range(LightNum):#online
 				r = rq.get(WebServerAddress+"GpioAjaxOn.php?n="+str(G_Pins[i])) #開啟網路電源
-				print G_Devices[i]+" on (online)"	
+				print G_Devices[i]+" on (Network)"
+				
+				# update document 
+				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",Network,\n"
+			# ************************** gpio function end	
 				
 			G_state = 1
 
@@ -167,6 +202,9 @@ while True:
 		if 0xFF & cv2.waitKey(5) == 27:
 			for i in range(len(G_Set)):
 				G_Set[i].clean()
+			w = open("output_"+str(dt.datetime.now())+".txt",'w')
+			w.writelines(SqlText)
+			w.close()
 			print "end"
 			break
 		time.sleep(0)
