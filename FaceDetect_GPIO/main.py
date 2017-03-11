@@ -58,7 +58,7 @@ if __name__ == '__main__':
 	
 	import requests as rq
 	#Note-(WebServer address) :edit web-server IP address
-	WebServerAddress="http://127.0.0.1/web_GPIO/"
+	WebServerAddress="http://192.168.1.189/web_GPIO/"
 	r = str(rq.get(WebServerAddress+"RJ.php").content)
 	#print r
 	
@@ -218,8 +218,10 @@ while True:
 		if 0xFF & cv2.waitKey(5) == 27:
 			for i in range(len(G_Set)):
 				G_Set[i].clean()
+				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
+
 			w = open("output_"+str(dt.datetime.now())+".txt",'w')
-			w.writelines(SqlText)
+			w.writelines(DocumentContent)
 			w.close()
 			print "end"
 			break
