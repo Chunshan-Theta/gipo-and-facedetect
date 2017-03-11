@@ -213,7 +213,7 @@ while True:
 			G_state = 0
 			
 		else:
-			print "GPIO is works"	
+			print "GPIO works"	
 		
 		if 0xFF & cv2.waitKey(5) == 27:
 			for i in range(len(G_Set)):
