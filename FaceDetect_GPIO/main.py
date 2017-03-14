@@ -79,7 +79,7 @@ if __name__ == '__main__':
 	SleepTime =1 # 網路版與本機板反映延遲時間(秒)	
 	# save document
 	DocumentContent = "INSERT INTO,config\n"
-	DocumentContent += "PinId,DeviceName,Time,state,note"
+	DocumentContent += "PinId,DeviceName,Time,state,note\n"
 while True:
 		ret, img = cam.read()
 		vis = PicData(img,cascade)
