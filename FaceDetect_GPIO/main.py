@@ -78,7 +78,8 @@ if __name__ == '__main__':
 	TurnOnRange_1 = 1 #多於此數則點亮一顆燈
 	SleepTime =1 # 網路版與本機板反映延遲時間(秒)	
 	# save document
-	DocumentContent = "save document\n"
+	DocumentContent = "INSERT INTO,config\n"
+	DocumentContent += "PinId,DeviceName,Time,state,note"
 while True:
 		ret, img = cam.read()
 		vis = PicData(img,cascade)
@@ -229,6 +230,7 @@ while True:
 				# update document 
 				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",off,Network,\n"
 				DocumentContent +=str(G_Pins[i])+","+G_Devices[i]+","+str(dt.datetime.now())+",off,local,\n"
+				
 			G_state = 0
 			
 		else:
