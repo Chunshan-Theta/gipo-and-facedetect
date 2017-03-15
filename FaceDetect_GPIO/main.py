@@ -224,7 +224,8 @@ if __name__ == '__main__':
 
 		elif vis.PeopleNum == 0 and G_state != 0:			
 			for i in range(len(G_Set)):
-				G_Set[i].off() 	#關閉本機電源			
+				G_Set[i].off() 	#關閉本機電源	
+				time.sleep(SleepTime)
 				r = rq.get(WebServerAddress+"GpioAjaxOff.php?n="+str(G_Pins[i]))#關閉網路電源
 				print G_Devices[i]+" off"
 				# update document 
